@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  jimmy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      

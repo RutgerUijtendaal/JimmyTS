@@ -5,7 +5,7 @@
   "main": "Main.ts",
   "scripts": {
     "tsc": "tsc --build --clean",
-    "prod": "tsc && node ./dist/Main.js"
+    "start": "tsc && node ./dist/Main.js"
   },
   "author": "",
   "license": "ISC",
