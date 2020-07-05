@@ -1,25 +1,21 @@
 import { Client } from '@typeit/discord';
+import * as dotenv from 'dotenv';
 
 export class Main {
-  private static _client: Client;
+  private static client: Client;
 
   static get Client(): Client {
-    return this._client;
+    return this.client;
   }
 
   static start() {
     console.log('starting');
-    this._client = new Client();
-
-    // In the login method, you must specify the glob string to load your classes (for the framework).
-    // In this case that's not necessary because the entry point of your application is this file.
-    this._client.login(
-      'MzMyMjgzNjA5MDI3MTgyNTky.XwCa6g.GoQptueHf_TdtkcTAw5TZG1YoAw',
-      `${__dirname}/Jimmy.js`, // If you compile your bot, the file extension will be .js
-    );
+    this.client = new Client();
+    this.client.login(process.env.BOT_TOKEN, `${__dirname}/Jimmy.js`);
 
     console.log(Client.getCommands());
   }
 }
 
+dotenv.config();
 Main.start();

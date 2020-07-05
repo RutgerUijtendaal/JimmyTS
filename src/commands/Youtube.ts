@@ -8,14 +8,8 @@ export abstract class Youtube extends CommandBase {
 
   @Command('yt')
   async youtube(command: CommandMessage) {
-    const url = this.buildUrlFromCommand(this.stripPrefix(command.commandContent));
-    this.get(url)
-      .then((data) => this.filterMatches(data.data, this.urlRegex, null))
+    this.get(this.ytSearchUrl + this.sanitizeContent(command.commandContent))
+      .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(this.ytResponseurl + result[0]));
-  }
-
-  buildUrlFromCommand(commandContent: string): string {
-    commandContent = this.stripPrefix(commandContent).replace(/ /g, '+');
-    return this.ytSearchUrl + commandContent;
   }
 }

@@ -6,9 +6,7 @@ import { Discord, CommandNotFound, CommandMessage, On, ArgsOf, Client } from '@t
 })
 export class Jimmy {
   @On('message')
-  onMessage([message]: ArgsOf<'message'>, client: Client) {
-    console.log('message');
-  }
+  onMessage([message]: ArgsOf<'message'>, client: Client) {}
 
   @CommandNotFound()
   notFound(command: CommandMessage) {
