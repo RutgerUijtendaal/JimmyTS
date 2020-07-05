@@ -2,7 +2,7 @@ import * as Path from 'path';
 import { Discord, CommandNotFound, CommandMessage, On, ArgsOf, Client, Command, Description } from '@typeit/discord';
 import logger from './util/Logger';
 
-@Discord('$', {
+@Discord('!', {
   import: [Path.join(__dirname, 'commands', '*.js')],
 })
 export class Jimmy {
