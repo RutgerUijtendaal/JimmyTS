@@ -21,16 +21,16 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       with:
         host: ${{ secrets.DA_HOST }}
         username: ${{ secrets.DA_USERNAME }}
         key: ${{ secrets.DA_KEY }}
         port: ${{ secrets.DA_PORT }}
-        envs: GITHUB_USERNAME, GITHUB_TOKEN, BOT_TOKEN
+        envs: GITHUB_USERNAME, DOCKER_TOKEN, BOT_TOKEN
         script: |
           docker stop $(docker ps -a -q)
-          docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+          docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $DOCKER_TOKEN
           docker pull docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
           docker run -dit docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
