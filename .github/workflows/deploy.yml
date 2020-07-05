@@ -21,7 +21,7 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       with:
         host: ${{ secrets.DA_HOST }}
