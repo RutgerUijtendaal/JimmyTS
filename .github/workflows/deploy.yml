@@ -32,4 +32,4 @@ jobs:
         script: |
           docker stop $(docker ps -a -q)
           docker pull docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
-          docker run -dit docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
+          docker run -dit docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest -env $BOT_TOKEN
