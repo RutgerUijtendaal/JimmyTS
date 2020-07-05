@@ -31,6 +31,5 @@ jobs:
         envs: GITHUB_USERNAME, DOCKER_TOKEN, BOT_TOKEN
         script: |
           docker stop $(docker ps -a -q)
-          docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $DOCKER_TOKEN
           docker pull docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
           docker run -dit docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
