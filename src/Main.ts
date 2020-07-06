@@ -12,7 +12,9 @@ export class Main {
   static start() {
     logger.info('starting');
     this.client = new Client();
-    this.client.login(process.env.BOT_TOKEN, `${__dirname}/Jimmy.js`);
+    this.client.login(process.env.BOT_TOKEN, `${__dirname}/Jimmy.js`).then(() => {
+      this.client.user.setActivity('!help', { type: 'PLAYING' });
+    });
     logger.info(Client.getCommands());
   }
 }
