@@ -40,8 +40,7 @@ jobs:
         envs: GITHUB_USERNAME, BOT_TOKEN
         script: |
           cd /opt/jimmy/
-          rm .env
-          echo "BOT_TOKEN=${BOT_TOKEN}" >> .env
+          echo "BOT_TOKEN=${BOT_TOKEN}" > .env
           docker-compose pull
           docker-compose up -d
           
