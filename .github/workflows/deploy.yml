@@ -17,19 +17,30 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         image-name: JimmyBotTS
 
+    - name: Copy docker-compose file to server
+      uses: appleboy/scp-action@master
+      with: 
+        host: ${{ secrets.DA_HOST }}
+        username: ${{ secrets.DA_USERNAME }}
+        key: ${{ secrets.DA_KEY }}
+        port: ${{ secrets.DA_PORT }}
+        source: "docker-compose.yml"
+        target: "/opt/jimmy/"
+      
     - name: Deploy package to Digital Ocean
       uses: appleboy/ssh-action@master
       env:
         GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       with:
         host: ${{ secrets.DA_HOST }}
         username: ${{ secrets.DA_USERNAME }}
         key: ${{ secrets.DA_KEY }}
         port: ${{ secrets.DA_PORT }}
-        envs: GITHUB_USERNAME, DOCKER_TOKEN, BOT_TOKEN
+        envs: GITHUB_USERNAME, BOT_TOKEN
         script: |
+          cd /opt/jimmy/
           docker stop $(docker ps -a -q)
-          docker pull docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
-          docker run -dit --env BOT_TOKEN=$BOT_TOKEN docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
+          docker-compose pull
+          docker-compose up -d
+          

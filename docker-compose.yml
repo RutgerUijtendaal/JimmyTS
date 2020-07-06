@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  jimmy:
+    image: docker.pkg.github.com/rutgeruijtendaal/jimmyts/jimmybotts:latest
+    environment:
+      - BOT_TOKEN
+
+    
+      
