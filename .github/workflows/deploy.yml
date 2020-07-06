@@ -41,6 +41,7 @@ jobs:
         script: |
           cd /opt/jimmy/
           echo $PWD
+          echo $BOT_TOKEN
           docker-compose pull
           docker-compose up -d
           
