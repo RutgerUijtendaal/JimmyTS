@@ -1,10 +1,11 @@
-## JimmyBotTS
+# JimmyBotTS
 
-----
 
 JimmyBot is a Discord bot that provides utility to a server. It uses the ```!``` as a prefix for commands.
 
-It provides the following utility commands:
+## Commands
+
+Jimmy provides the following utility commands:
 
 Command | Function 
  --- | --- 
@@ -20,9 +21,7 @@ Command | Function
 
 If a message comes through that starts with a ```!``` but the command following it is not recognized the bot defaults to ```!i``` and an image is returned based on the text following the ```!```.
 
-
-#### Running the Bot
----
+## Usage
 
 The newest version of the bot gets build into a Docker image and hosted as a package on this repo.
 
