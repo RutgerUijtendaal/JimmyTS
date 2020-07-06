@@ -7,7 +7,7 @@ export abstract class Magic extends CommandBase {
   private message = `\`\`\`Invite link: \n    ${this.inviteLink}\n\nGithub: \n    ${this.githubLink}\n\n\`\`\``;
 
   @Command('links')
-  @Description('Useful links')
+  @Description('Invite and Github links')
   async magic(command: CommandMessage) {
     command.channel.send(this.message);
   }
