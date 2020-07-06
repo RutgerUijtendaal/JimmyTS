@@ -40,7 +40,6 @@ jobs:
         envs: GITHUB_USERNAME, BOT_TOKEN
         script: |
           cd /opt/jimmy/
-          docker stop $(docker ps -a -q)
           docker-compose pull
           docker-compose up -d
           
