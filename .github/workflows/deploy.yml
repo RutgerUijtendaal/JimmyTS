@@ -40,6 +40,6 @@ jobs:
         envs: GITHUB_USERNAME, BOT_TOKEN
         script: |
           cd /opt/jimmy/
-          docker-compose pull
-          docker-compose up -d
+          docker-compose pull --verbose
+          docker-compose up -d --verbose
           
