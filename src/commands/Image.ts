@@ -1,8 +1,9 @@
 import { CommandBase } from './CommandBase';
 import { Command, CommandMessage, Description, CommandNotFound } from '@typeit/discord';
-import logger from '../util/Logger';
+import log from '../util/Logger';
+import { Rabbit } from '../rabbitmq/RabbitMQ';
 
-export abstract class Image extends CommandBase {
+export class Image extends CommandBase {
   private imageSearchUrl = 'http://results.dogpile.com/serp?qc=images&q=';
   private urlRegex = /<a class="link" href="([A-Za-z0-9/:.-_%]+)"/g;
 
@@ -12,7 +13,7 @@ export abstract class Image extends CommandBase {
     this.get(this.imageSearchUrl + command.content.substr(1).replace(/ /g, '%20'))
       .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(result[0]))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 
   @Command('i')
@@ -21,7 +22,7 @@ export abstract class Image extends CommandBase {
     this.get(this.imageSearchUrl + this.sanitizeContent(command.commandContent, '%20'))
       .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(result[0]))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 
   @Command('ri')
@@ -30,6 +31,6 @@ export abstract class Image extends CommandBase {
     this.get(this.imageSearchUrl + this.sanitizeContent(command.commandContent))
       .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(result[this.random(1, 5)]))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 }

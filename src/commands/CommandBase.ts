@@ -1,5 +1,5 @@
 import axios from 'axios';
-import logger from '../util/Logger';
+import log from '../util/Logger';
 
 export abstract class CommandBase {
   stripPrefix(commandContent: string): string {
@@ -10,7 +10,7 @@ export abstract class CommandBase {
     try {
       return await axios.get(url);
     } catch (error) {
-      logger.error(error);
+      log.error(error);
       throw error;
     }
   }

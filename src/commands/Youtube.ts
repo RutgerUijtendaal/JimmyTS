@@ -1,6 +1,6 @@
 import { Command, CommandMessage, Description } from '@typeit/discord';
 import { CommandBase } from './CommandBase';
-import logger from '../util/Logger';
+import log from '../util/Logger';
 
 export abstract class Youtube extends CommandBase {
   private ytSearchUrl = 'https://www.youtube.com/results?search_query=';
@@ -13,7 +13,7 @@ export abstract class Youtube extends CommandBase {
     this.get(this.ytSearchUrl + this.sanitizeContent(command.commandContent))
       .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(this.ytResponseurl + result[0]))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 
   @Command('ryt')
@@ -22,6 +22,6 @@ export abstract class Youtube extends CommandBase {
     this.get(this.ytSearchUrl + this.sanitizeContent(command.commandContent))
       .then((response) => this.filterMatches(response.data, this.urlRegex))
       .then((result) => command.channel.send(this.ytResponseurl + result[this.random(1, 5)]))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 }

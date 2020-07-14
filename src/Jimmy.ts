@@ -1,10 +1,10 @@
 import * as Path from 'path';
-import { Discord, CommandNotFound, CommandMessage, On, ArgsOf, Client, Command, Description } from '@typeit/discord';
-import logger from './util/Logger';
-import { Image } from './commands/Image';
+import { Discord, CommandMessage, On, Client, Command, Description, ArgsOf } from '@typeit/discord';
 
-@Discord('!', {
-  import: [Path.join(__dirname, 'commands', '*.js')],
+export const prefix = '$';
+
+@Discord(prefix, {
+  import: [Path.join(__dirname, 'commands', '*.js'), Path.join(__dirname, 'events', '*.js')],
 })
 export class Jimmy {
   @Command('help')

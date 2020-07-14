@@ -1,6 +1,6 @@
 import { Client } from '@typeit/discord';
 import * as dotenv from 'dotenv';
-import logger from './util/Logger';
+import log from './util/Logger';
 
 export class Main {
   private static client: Client;
@@ -10,14 +10,14 @@ export class Main {
   }
 
   static start() {
-    logger.info('starting');
+    log.info('starting');
     this.client = new Client();
     this.client.login(process.env.BOT_TOKEN, `${__dirname}/Jimmy.js`).then(() => {
       this.client.user.setActivity('!help', { type: 'PLAYING' });
     });
-    logger.info(Client.getCommands());
+    log.info(Client.getCommands());
+    log.info(Client.getEvent());
   }
 }
-
 dotenv.config();
 Main.start();

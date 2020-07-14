@@ -1,7 +1,7 @@
 import { Command, CommandMessage, Description } from '@typeit/discord';
 import { CommandBase } from './CommandBase';
 import JSSoup from 'jssoup';
-import logger from '../util/Logger';
+import log from '../util/Logger';
 
 export abstract class Grimoire extends CommandBase {
   private grimSearchUrl = 'https://thegrimoire.xyz/spells/';
@@ -12,7 +12,7 @@ export abstract class Grimoire extends CommandBase {
     this.get(this.grimSearchUrl + this.sanitizeContent(command.commandContent.toLowerCase(), '-'))
       .then((response) => this.buildSpellFromPage(response.data))
       .then((message) => command.channel.send(message))
-      .catch((error) => logger.error(error));
+      .catch((error) => log.error(error));
   }
 
   buildSpellFromPage(data) {
