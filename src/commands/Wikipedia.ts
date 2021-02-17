@@ -9,6 +9,6 @@ export abstract class Wikipedia extends CommandBase {
     const query = this.stripPrefix(command.commandContent);
     wiki()
       .find(query)
-      .then((page) => command.channel.send(page.url()));
+      .then((page) => command.channel.send(page.url().toString()));
   }
 }
