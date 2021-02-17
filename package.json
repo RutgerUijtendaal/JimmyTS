@@ -16,6 +16,7 @@
     "axios": "^0.19.2",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
+    "duckduckgo-images-api": "^1.0.5",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -26,6 +27,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/duckduckgo-images-api": "^1.0.0",
     "@types/node": "^14.0.14"
   }
 }

@@ -15,7 +15,7 @@ export class Main {
     this.client.login(process.env.BOT_TOKEN, `${__dirname}/Jimmy.js`).then(() => {
       this.client.user.setActivity('!help', { type: 'PLAYING' });
     });
-    logger.info(Client.getCommands());
+    // logger.info(Client.getCommands());
   }
 }
 
