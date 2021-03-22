@@ -38,7 +38,7 @@ jobs:
         username: ${{ secrets.DA_USERNAME }}
         key: ${{ secrets.DA_KEY }}
         port: ${{ secrets.DA_PORT }}
-        envs: GITHUB_USERNAME, BOT_TOKEN
+        envs: GITHUB_USERNAME, BOT_TOKEN, MOVIE_TOKEN
         script: |
           cd /opt/jimmy/
           echo "BOT_TOKEN=${BOT_TOKEN}" > .env
