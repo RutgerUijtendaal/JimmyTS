@@ -32,6 +32,7 @@ jobs:
       env:
         GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        MOVIE_TOKEN: ${{ secrets.MOVIE_TOKEN }}
       with:
         host: ${{ secrets.DA_HOST }}
         username: ${{ secrets.DA_USERNAME }}
@@ -41,6 +42,7 @@ jobs:
         script: |
           cd /opt/jimmy/
           echo "BOT_TOKEN=${BOT_TOKEN}" > .env
+          echo "MOVIE_TOKEN=${MOVIE_TOKEN}" >> .env
           docker-compose pull
           docker-compose up -d
           
