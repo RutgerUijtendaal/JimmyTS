@@ -24,7 +24,7 @@ export abstract class Movies extends CommandBase {
       })
   }
 
-  private handleSearchResult(fuzzyResult: imdb.SearchResult): Promise<String> {
+  private handleSearchResult(fuzzyResult: imdb.SearchResult): Promise<string> {
     return this.client.get({id: fuzzyResult.imdbid})
       .then((result) => {
         return this.buildResponse(result);
